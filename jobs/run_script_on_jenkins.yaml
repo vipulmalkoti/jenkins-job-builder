@@ -1,0 +1,29 @@
+- job:
+    name: <project name>
+    project-type: freestyle
+    description: 'Execute the script'
+    node: <any specific node/slave to run the build on>
+    retry-count: 1
+    triggers:
+      - timed: '@weekly'
+    wrappers:
+      - credentials-binding:
+          - text:
+              credential-id: <password name>
+              variable: <password variable>
+          - text:
+              credential-id: <password name>
+              variable: <password variable>
+    scm:
+      - git:
+          url: <git url to the scm>
+          branches:
+            - master
+          skip-tag: false
+    builders:
+      - shell: |
+          #!/bin/sh -ex
+          python <"$WORKSPACE/script_to_be_ececuted>
+    publishers:  
+      - email:
+          recipients: vmalkoti@example.com
