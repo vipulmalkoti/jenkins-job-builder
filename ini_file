@@ -1,0 +1,5 @@
+[jenkins]
+user=<username>
+password=<API token on www.jenkins_url/me/configure>
+url=<URL to jenkins server>
+query_plugins_info=False #This is not needed, just helps speed up the jenkins CI
